@@ -15,11 +15,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView input = findViewById(R.id.editTextNumberDecimal);
+        TextView resultView = findViewById(R.id.result);
         Button convertButton = findViewById(R.id.convertBtn);
         convertButton.setOnClickListener(view -> {
-            int result = Integer.parseInt(input.toString());
-            Log.i(input.toString(), "Answer");
-            Toast.makeText(this, "Your money is:" + result, Toast.LENGTH_LONG).show();
+            try {
+                Double result = Double.parseDouble(input.getText().toString()) * 24000;
+                resultView.setText("Your money in VND is: "+ result);
+            } catch (Exception e) {
+                resultView.setText("Wrong input!!!");
+            }
         });
     }
 }
