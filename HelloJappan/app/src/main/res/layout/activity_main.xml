@@ -477,7 +477,7 @@
         android:id="@+id/titleBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hiragana"
+        android:text="@string/hiragana"
         android:textColor="@color/design_default_color_error"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
