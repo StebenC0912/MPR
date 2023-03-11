@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    tools:visibility="visible">
+    tools:context=".katakana">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -30,7 +29,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="0"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/a" />
+                app:srcCompat="@drawable/a1" />
 
             <ImageButton
                 android:id="@+id/i"
@@ -39,7 +38,7 @@
                 android:scaleType="fitCenter"
                 app:layout_column="1"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/i" />
+                app:srcCompat="@drawable/i1" />
 
             <ImageButton
                 android:id="@+id/u"
@@ -48,7 +47,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="2"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/u" />
+                app:srcCompat="@drawable/u1" />
 
             <ImageButton
                 android:id="@+id/e"
@@ -57,7 +56,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="3"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/e" />
+                app:srcCompat="@drawable/e1" />
 
             <ImageButton
                 android:id="@+id/o"
@@ -66,7 +65,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="4"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/o" />
+                app:srcCompat="@drawable/o1" />
 
             <ImageButton
                 android:id="@+id/ka"
@@ -75,7 +74,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="0"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/ka" />
+                app:srcCompat="@drawable/ka1" />
 
             <ImageButton
                 android:id="@+id/ki"
@@ -84,7 +83,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="1"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/ki" />
+                app:srcCompat="@drawable/ki1" />
 
             <ImageButton
                 android:id="@+id/ku"
@@ -93,7 +92,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="2"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/ku" />
+                app:srcCompat="@drawable/ku1" />
 
             <ImageButton
                 android:id="@+id/ke"
@@ -102,7 +101,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="3"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/ke" />
+                app:srcCompat="@drawable/ke1" />
 
             <ImageButton
                 android:id="@+id/ko"
@@ -111,7 +110,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="4"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/ko" />
+                app:srcCompat="@drawable/ko1" />
 
             <ImageButton
                 android:id="@+id/sa"
@@ -120,7 +119,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="0"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/sa" />
+                app:srcCompat="@drawable/sa1" />
 
             <ImageButton
                 android:id="@+id/shi"
@@ -129,7 +128,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="1"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/shi" />
+                app:srcCompat="@drawable/shi1" />
 
             <ImageButton
                 android:id="@+id/su"
@@ -138,7 +137,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="2"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/su" />
+                app:srcCompat="@drawable/su1" />
 
             <ImageButton
                 android:id="@+id/se"
@@ -147,7 +146,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="3"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/se" />
+                app:srcCompat="@drawable/se1" />
 
             <ImageButton
                 android:id="@+id/so"
@@ -156,7 +155,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="4"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/so" />
+                app:srcCompat="@drawable/so1" />
 
             <ImageButton
                 android:id="@+id/ta"
@@ -165,7 +164,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="0"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/ta" />
+                app:srcCompat="@drawable/ta1" />
 
             <ImageButton
                 android:id="@+id/chi"
@@ -174,7 +173,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="1"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/chi" />
+                app:srcCompat="@drawable/chi1" />
 
             <ImageButton
                 android:id="@+id/tsu"
@@ -183,7 +182,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="2"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/tsu" />
+                app:srcCompat="@drawable/tsu1" />
 
             <ImageButton
                 android:id="@+id/te"
@@ -192,7 +191,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="3"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/te" />
+                app:srcCompat="@drawable/te1" />
 
             <ImageButton
                 android:id="@+id/to"
@@ -201,7 +200,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="4"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/to" />
+                app:srcCompat="@drawable/to1" />
 
             <ImageButton
                 android:id="@+id/na"
@@ -210,7 +209,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="0"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/na" />
+                app:srcCompat="@drawable/na1" />
 
             <ImageButton
                 android:id="@+id/ni"
@@ -219,7 +218,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="1"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/ni" />
+                app:srcCompat="@drawable/ni1" />
 
             <ImageButton
                 android:id="@+id/nu"
@@ -228,7 +227,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="2"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/nu" />
+                app:srcCompat="@drawable/nu1" />
 
             <ImageButton
                 android:id="@+id/ne"
@@ -237,7 +236,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="3"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/ne" />
+                app:srcCompat="@drawable/ne1" />
 
             <ImageButton
                 android:id="@+id/no"
@@ -246,7 +245,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="4"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/no" />
+                app:srcCompat="@drawable/no1" />
 
             <ImageButton
                 android:id="@+id/ha"
@@ -255,7 +254,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="0"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/ha" />
+                app:srcCompat="@drawable/ha1" />
 
             <ImageButton
                 android:id="@+id/hi"
@@ -264,7 +263,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="1"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/hi" />
+                app:srcCompat="@drawable/hi1" />
 
             <ImageButton
                 android:id="@+id/fu"
@@ -273,7 +272,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="2"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/fu" />
+                app:srcCompat="@drawable/fu1" />
 
             <ImageButton
                 android:id="@+id/he"
@@ -282,7 +281,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="3"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/he" />
+                app:srcCompat="@drawable/he1" />
 
             <ImageButton
                 android:id="@+id/ho"
@@ -291,7 +290,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="4"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/ho" />
+                app:srcCompat="@drawable/ho1" />
 
             <ImageButton
                 android:id="@+id/ma"
@@ -300,7 +299,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="0"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/ma" />
+                app:srcCompat="@drawable/ma1" />
 
             <ImageButton
                 android:id="@+id/mi"
@@ -309,7 +308,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="1"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/mi" />
+                app:srcCompat="@drawable/mi1" />
 
             <ImageButton
                 android:id="@+id/mu"
@@ -318,7 +317,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="2"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/mu" />
+                app:srcCompat="@drawable/mu1" />
 
             <ImageButton
                 android:id="@+id/me"
@@ -327,7 +326,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="3"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/me" />
+                app:srcCompat="@drawable/me1" />
 
             <ImageButton
                 android:id="@+id/mo"
@@ -336,7 +335,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="4"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/mo" />
+                app:srcCompat="@drawable/mo1" />
 
             <ImageButton
                 android:id="@+id/ya"
@@ -345,7 +344,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="0"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/ya" />
+                app:srcCompat="@drawable/ya1" />
 
             <ImageButton
                 android:id="@+id/yu"
@@ -354,7 +353,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="2"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/yu" />
+                app:srcCompat="@drawable/yu1" />
 
             <ImageButton
                 android:id="@+id/yo"
@@ -363,7 +362,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="4"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/yo" />
+                app:srcCompat="@drawable/yo1" />
 
             <ImageButton
                 android:id="@+id/ra"
@@ -372,7 +371,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="0"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/ra" />
+                app:srcCompat="@drawable/ra1" />
 
             <ImageButton
                 android:id="@+id/ri"
@@ -381,7 +380,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="1"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/ri" />
+                app:srcCompat="@drawable/ri1" />
 
             <ImageButton
                 android:id="@+id/ru"
@@ -390,7 +389,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="2"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/ru" />
+                app:srcCompat="@drawable/ru1" />
 
             <ImageButton
                 android:id="@+id/re"
@@ -399,7 +398,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="3"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/re" />
+                app:srcCompat="@drawable/re1" />
 
             <ImageButton
                 android:id="@+id/ro"
@@ -408,7 +407,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="4"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/ro" />
+                app:srcCompat="@drawable/ro1" />
 
             <ImageButton
                 android:id="@+id/wa"
@@ -417,7 +416,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="0"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/wa" />
+                app:srcCompat="@drawable/wa1" />
 
             <ImageButton
                 android:id="@+id/wo"
@@ -426,7 +425,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="4"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/wo" />
+                app:srcCompat="@drawable/wo1" />
 
             <ImageButton
                 android:id="@+id/n"
@@ -435,7 +434,7 @@
                 android:scaleType="centerCrop"
                 app:layout_column="0"
                 app:layout_columnWeight="1"
-                app:srcCompat="@drawable/n" />
+                app:srcCompat="@drawable/n1" />
         </androidx.gridlayout.widget.GridLayout>
     </ScrollView>
 
@@ -452,8 +451,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/border"
-
+            android:background="@drawable/black_border"
             android:text="Hiragana"
             android:textColor="@color/black"
             app:layout_constraintEnd_toStartOf="@+id/katakana_button"
@@ -467,9 +465,10 @@
             android:layout_marginBottom="16dp"
             android:layout_weight="1"
             android:text="Katakana"
+            android:background="@drawable/border"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/black_border" />
+             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -477,7 +476,7 @@
         android:id="@+id/titleBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hiragana"
+        android:text="Katakana"
         android:textColor="@color/design_default_color_error"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -485,8 +484,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-

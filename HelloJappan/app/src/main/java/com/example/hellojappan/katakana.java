@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-public class MainActivity extends AppCompatActivity {
+public class katakana extends AppCompatActivity {
     private MediaPlayer mediaPlayerA;
     private MediaPlayer mediaPlayerI;
     private MediaPlayer mediaPlayerU;
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_katakana);
         // create media player
         mediaPlayerA = MediaPlayer.create(this, R.raw.a);
         mediaPlayerI = MediaPlayer.create(this, R.raw.i);
@@ -477,11 +477,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button katakana = findViewById(R.id.katakana_button);
-        katakana.setOnClickListener(new View.OnClickListener() {
+        Button hiragana = findViewById(R.id.hiragana_button);
+        hiragana.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,katakana.class);
+                Intent intent = new Intent(katakana.this, MainActivity.class);
                 startActivity(intent);
             }
         });
