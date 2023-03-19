@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">tut6</string>
+    <string name="which_language">Which language do you want to display?</string>
+    <string name="choose_lang">Choose your language:</string>
+</resources>
