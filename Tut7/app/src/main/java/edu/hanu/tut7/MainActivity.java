@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -20,75 +22,56 @@ import edu.hanu.tut7.adapter.NoteAdapter;
 import edu.hanu.tut7.db.DbHelper;
 import edu.hanu.tut7.model.Note;
 
-public class MainActivity extends AppCompatActivity {
 
-    private List<Note> notes = new ArrayList<>();
-    private NoteAdapter noteAdapter;
-    private RecyclerView noteRecyclerView;
-    private DbHelper dbHelper;
+    public class MainActivity extends AppCompatActivity {
+        private List<Note> notes = new ArrayList<>();
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
 
-        noteRecyclerView = findViewById(R.id.note_recycler_view);
-        noteRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        noteAdapter = new NoteAdapter(notes);
-        noteRecyclerView.setAdapter(noteAdapter);
+            RecyclerView noteRecyclerView = findViewById(R.id.note_recycler_view);
+            noteRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+            noteRecyclerView.setAdapter(new NoteAdapter(notes));
 
-        dbHelper = new DbHelper(this);
-        notes.addAll(dbHelper.getAllNotes());
-        noteAdapter.notifyDataSetChanged();
+            Button addNoteButton = findViewById(R.id.add_note_button);
+            addNoteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setTitle("New Note");
 
-        findViewById(R.id.add_note_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showAddNoteDialog();
-            }
-        });
-    }
+                    final EditText titleEditText = new EditText(MainActivity.this);
+                    titleEditText.setInputType(InputType.TYPE_CLASS_TEXT);
+                    builder.setView(titleEditText);
 
-    private void showAddNoteDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Add Note");
+                    final EditText contentEditText = new EditText(MainActivity.this);
+                    contentEditText.setInputType(InputType.TYPE_CLASS_TEXT);
+                    builder.setView(contentEditText);
 
-        LayoutInflater inflater = getLayoutInflater();
-        View dialogLayout = inflater.inflate(R.layout.add_note_dialog, null);
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            String title = titleEditText.getText().toString();
+                            String content = contentEditText.getText().toString();
+                            Note newNote = new Note(title, content);
+                            notes.add(newNote);
+                            noteRecyclerView.getAdapter().notifyDataSetChanged();
+                        }
+                    });
 
-        final EditText titleEditText = dialogLayout.findViewById(R.id.note_title_edit_text);
-        final EditText contentEditText = dialogLayout.findViewById(R.id.note_content_edit_text);
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
 
-        builder.setView(dialogLayout);
-
-        builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String title = titleEditText.getText().toString();
-                String content = contentEditText.getText().toString();
-                if (!title.isEmpty() || !content.isEmpty()) {
-                    addNoteToDatabase(title, content);
-                } else {
-                    Toast.makeText(MainActivity.this, "Please enter a title or content", Toast.LENGTH_SHORT).show();
+                    builder.show();
                 }
-            }
-        });
-
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-
-        builder.create().show();
+            });
+        }
     }
 
-    private void addNoteToDatabase(String title, String content) {
-        long id = dbHelper.insert(title, content, new Date().getTime());
-        Note note = dbHelper.getNoteById(id);
-        notes.add(0, note);
-        noteAdapter.notifyItemInserted(0);
-        noteRecyclerView.scrollToPosition(0);
-    }
-}
+
