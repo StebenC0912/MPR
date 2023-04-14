@@ -5,60 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-    <!-- Rectangle 1 -->
-
-
-    <!-- search-normal -->
-
-
-    <!-- Search -->
-
-    <View
-        android:id="@+id/rectangle_1"
-        android:layout_width="357dp"
-        android:layout_height="35dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/rectangle_1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <RelativeLayout
-        android:id="@+id/search_norm"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
-        android:background="@drawable/search_norm"
-        app:layout_constraintEnd_toEndOf="@+id/rectangle_1"
-        app:layout_constraintTop_toTopOf="@+id/rectangle_1" />
-
-    <TextView
-        android:id="@+id/search"
-        android:layout_width="78dp"
-        android:layout_height="25dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="4dp"
-        android:gravity="top"
-        android:text="@string/search"
-        android:textAppearance="@style/search"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/rectangle_1"
-        app:layout_constraintTop_toTopOf="@+id/rectangle_1" />
-    <!--
-    Font family: Inter
-    Line height: 16sp
-    (identical to box height)
-    -->
-
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:orientation="horizontal"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintTop_toBottomOf="parent"
+    android:layout_margin="10dp"
+    android:background="@drawable/search_box_border"
+    >
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:hint="Search..."
+        android:layout_weight="1"
+        tools:ignore="TouchTargetSizeCheck"
+        />
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/search_icon"
+        />
+</androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
