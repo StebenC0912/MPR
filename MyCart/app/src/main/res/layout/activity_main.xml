@@ -12,7 +12,9 @@
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintTop_toBottomOf="parent"
     android:layout_margin="10dp"
+    android:gravity="center"
     android:background="@drawable/search_box_border"
+    android:id="@+id/search_bar"
     >
     <EditText
         android:layout_width="wrap_content"
@@ -23,10 +25,18 @@
         tools:ignore="TouchTargetSizeCheck"
         />
     <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginRight="15dp"
         android:src="@drawable/search_icon"
         />
 </androidx.appcompat.widget.LinearLayoutCompat>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/search_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/fragment_container"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
