@@ -3,14 +3,24 @@ package hanu.a2_2001040121.myapplication.models;
 public class Product {
     private Long id;
     private String thumbnail;
+    private String name;
     private String category;
     private int unitPrice;
 
-    public Product(Long id, String thumbnail, String category, int unitPrice) {
+    public Product(Long id, String thumbnail, String name, String category, int unitPrice) {
         this.id = id;
         this.thumbnail = thumbnail;
+        this.name = name;
         this.category = category;
         this.unitPrice = unitPrice;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Long getId() {
