@@ -63,7 +63,6 @@ public class ProductAdapter extends RecyclerView.Adapter {
         } else {
             ((ProductViewHolder) holder).productName.setText(product.getName());
         }
-
         ((ProductViewHolder) holder).productPrice.setText("$" + String.valueOf(product.getUnitPrice()));
 
     }
@@ -88,7 +87,6 @@ public class ProductAdapter extends RecyclerView.Adapter {
 
         public ProductViewHolder(View itemView) {
             super(itemView);
-
             productImage = itemView.findViewById(R.id.product_image);
             productName = itemView.findViewById(R.id.product_name);
             productPrice = itemView.findViewById(R.id.product_price);
