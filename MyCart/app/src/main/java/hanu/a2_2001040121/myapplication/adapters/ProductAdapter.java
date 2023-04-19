@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.util.LruCache;
 import android.view.LayoutInflater;
@@ -26,6 +27,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,14 +56,8 @@ public class ProductAdapter extends RecyclerView.Adapter {
         Product product = productList.get(position);
         Log.d(TAG, "onBindViewHolder: " + product.toString());
         // Load the image from the URL into the ImageView
-        try {
-            URL url = new URL(product.getThumbnail());
-            Log.d(TAG, "onBindViewHolder: " + url);
-            Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-            ((ProductViewHolder) holder).productImage.setImageBitmap(bmp);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        new ImageDownloader(((ProductViewHolder) holder).productImage).execute(product.getThumbnail());
+
         // Trim the name string if it's longer than 2 lines
         if (product.getName().length() > 40) {
             String trimmed = product.getName().substring(0, 37) + "...";
@@ -68,7 +65,7 @@ public class ProductAdapter extends RecyclerView.Adapter {
         } else {
             ((ProductViewHolder) holder).productName.setText(product.getName());
         }
-        ((ProductViewHolder) holder).productPrice.setText("$" + String.valueOf(product.getUnitPrice()));
+        ((ProductViewHolder) holder).productPrice.setText("đ" + String.valueOf(product.getUnitPrice()));
 
     }
 
@@ -99,3 +96,35 @@ public class ProductAdapter extends RecyclerView.Adapter {
     }
 }
 
+class ImageDownloader extends AsyncTask<String, Void, Bitmap> {
+
+    private ImageView imageView;
+
+    public ImageDownloader(ImageView imageView) {
+        this.imageView = imageView;
+    }
+
+    @Override
+    protected Bitmap doInBackground(String... urls) {
+        try {
+            URL url = new URL(urls[0]);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap bitmap = BitmapFactory.decodeStream(input);
+            input.close();
+            return bitmap;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    protected void onPostExecute(Bitmap bitmap) {
+        if (bitmap != null) {
+            imageView.setImageBitmap(bitmap);
+        }
+    }
+}

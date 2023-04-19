@@ -31,14 +31,16 @@
         <TextView
             android:id="@+id/product_price"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_weight="1"
             android:textColor="@android:color/holo_red_dark"
-            android:textSize="16sp" />
+            android:textSize="18sp"/>
+
         <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:src="@drawable/_22427_cart_icon"
-            />
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="5dp"
+            android:background="@drawable/icon_shape"
+            android:src="@drawable/shopping_cart" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </LinearLayout>
