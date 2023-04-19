@@ -1,8 +1,11 @@
 package hanu.a2_2001040121.myapplication.adapters;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.util.LruCache;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,9 +51,11 @@ public class ProductAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Product product = productList.get(position);
+        Log.d(TAG, "onBindViewHolder: " + product.toString());
         // Load the image from the URL into the ImageView
         try {
             URL url = new URL(product.getThumbnail());
+            Log.d(TAG, "onBindViewHolder: " + url);
             Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
             ((ProductViewHolder) holder).productImage.setImageBitmap(bmp);
         } catch (IOException e) {

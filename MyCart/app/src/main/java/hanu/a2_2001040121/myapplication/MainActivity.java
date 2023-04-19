@@ -39,13 +39,11 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize the product list
         productList = new ArrayList<>();
-
+        // Fetch data from the API
+        fetchData();
         // Initialize ProductAdapter with the Product list
         adapter = new ProductAdapter(this, productList);
         recyclerView.setAdapter(adapter);
-
-        // Fetch data from the API
-        fetchData();
     }
 
     public void fetchData() {
