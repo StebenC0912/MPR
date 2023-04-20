@@ -6,7 +6,7 @@ public class Product {
     private String name;
     private String category;
     private int unitPrice;
-
+    private int quantity = 0;
     public Product(Long id, String thumbnail, String name, String category, int unitPrice) {
         this.id = id;
         this.thumbnail = thumbnail;
@@ -64,5 +64,13 @@ public class Product {
 
     public void setUnitPrice(int unitPrice) {
         this.unitPrice = unitPrice;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 }

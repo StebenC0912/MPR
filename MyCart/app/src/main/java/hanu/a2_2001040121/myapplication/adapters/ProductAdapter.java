@@ -70,6 +70,7 @@ public class ProductAdapter extends RecyclerView.Adapter {
         ((ProductViewHolder) holder).shoppingCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(context, "Added to cart", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -78,12 +79,6 @@ public class ProductAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemCount() {
         return productList != null ? productList.size() : 0;
-    }
-
-    public void updateData(List<Product> newData) {
-        productList.clear();
-        productList.addAll(newData);
-        notifyDataSetChanged();
     }
 
     public static class ProductViewHolder extends RecyclerView.ViewHolder {
