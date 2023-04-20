@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -44,6 +45,7 @@ public class ProductAdapter extends RecyclerView.Adapter {
         this.context = context;
         this.productList = productList;
     }
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -54,10 +56,8 @@ public class ProductAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Product product = productList.get(position);
-        Log.d(TAG, "onBindViewHolder: " + product.toString());
         // Load the image from the URL into the ImageView
         new ImageDownloader(((ProductViewHolder) holder).productImage).execute(product.getThumbnail());
-
         // Trim the name string if it's longer than 2 lines
         if (product.getName().length() > 40) {
             String trimmed = product.getName().substring(0, 37) + "...";
@@ -67,13 +67,18 @@ public class ProductAdapter extends RecyclerView.Adapter {
         }
         ((ProductViewHolder) holder).productPrice.setText("đ" + String.valueOf(product.getUnitPrice()));
 
+        ((ProductViewHolder) holder).shoppingCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return productList != null ? productList.size() : 0;
     }
-
 
     public void updateData(List<Product> newData) {
         productList.clear();
@@ -86,12 +91,14 @@ public class ProductAdapter extends RecyclerView.Adapter {
         public ImageView productImage;
         public TextView productName;
         public TextView productPrice;
+        private ImageView shoppingCart;
 
         public ProductViewHolder(View itemView) {
             super(itemView);
             productImage = itemView.findViewById(R.id.product_image);
             productName = itemView.findViewById(R.id.product_name);
             productPrice = itemView.findViewById(R.id.product_price);
+            shoppingCart = itemView.findViewById(R.id.shoppingCart);
         }
     }
 }
