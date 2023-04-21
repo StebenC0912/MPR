@@ -3,6 +3,7 @@ package hanu.a2_2001040121.myapplication.adapters;
 import static android.content.ContentValues.TAG;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -35,11 +36,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hanu.a2_2001040121.myapplication.R;
+import hanu.a2_2001040121.myapplication.database.MyDatabaseHelper;
 import hanu.a2_2001040121.myapplication.models.Product;
 
 public class ProductAdapter extends RecyclerView.Adapter {
     private ArrayList<Product> productList;
     private Context context;
+    private MyDatabaseHelper dbHelper;
+    private SQLiteDatabase db;
+
 
     public ProductAdapter(Context context, ArrayList<Product> productList) {
         this.context = context;
@@ -71,7 +76,9 @@ public class ProductAdapter extends RecyclerView.Adapter {
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "Added to cart", Toast.LENGTH_SHORT).show();
-
+                dbHelper = new MyDatabaseHelper(context);
+                db = dbHelper.getWritableDatabase();
+                dbHelper.insertProduct(product, db);
             }
         });
     }

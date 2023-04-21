@@ -15,6 +15,15 @@ public class Product {
         this.unitPrice = unitPrice;
     }
 
+    public Product(int id, String name, String thumbnail, int quantity, int unitPrice, String category) {
+        this.id = (long) id;
+        this.name = name;
+        this.thumbnail = thumbnail;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+        this.category = category;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
