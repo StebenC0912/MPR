@@ -21,5 +21,6 @@ public class CheckOut extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recycler_view);
         checkOutAdapter = new CheckOutAdapter(productList,this);
+        recyclerView.setAdapter(checkOutAdapter);
     }
 }
