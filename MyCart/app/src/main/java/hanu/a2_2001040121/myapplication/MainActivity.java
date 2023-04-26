@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         // Initialize ProductAdapter with the Product list
         adapter = new ProductAdapter(this, productList);
         recyclerView.setAdapter(adapter);
+        
     }
 
     @Override
@@ -62,11 +64,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_checkout) {
-            dbHelper = new MyDatabaseHelper(this);
-            db = dbHelper.getWritableDatabase();
-            List<Product> products = dbHelper.getAllProducts(db);
             Intent intent = new Intent(this, CheckOut.class);
-            intent.putExtra("products", (Serializable) products);
             startActivity(intent);
             return true;
         }

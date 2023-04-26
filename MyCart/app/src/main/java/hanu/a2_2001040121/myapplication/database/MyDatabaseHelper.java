@@ -102,4 +102,22 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    public boolean checkProduct(Product product, SQLiteDatabase db) {
+        String query = "SELECT * FROM " + TABLE_Name + " WHERE "
+                + COLUMN_ID + " = " + product.getId();
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.getCount() <= 0) {
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        return true;
+    }
+
+    public void updateProduct(Product product, SQLiteDatabase db) {
+        String query = "UPDATE " + TABLE_Name + " SET "
+                + COLUMN_QUANTITY + " = " + COLUMN_QUANTITY + " + 1"
+                + " WHERE " + COLUMN_ID + " = " + product.getId();
+        db.execSQL(query);
+    }
 }

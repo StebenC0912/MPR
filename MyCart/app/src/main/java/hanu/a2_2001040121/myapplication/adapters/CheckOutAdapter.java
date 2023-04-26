@@ -1,5 +1,6 @@
 package hanu.a2_2001040121.myapplication.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,18 +11,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import hanu.a2_2001040121.myapplication.R;
 import hanu.a2_2001040121.myapplication.models.Product;
 
 public class CheckOutAdapter extends RecyclerView.Adapter {
-    private ArrayList<Product> productList;
+    private List<Product> productList;
     private Context context;
 
-    public CheckOutAdapter(ArrayList<Product> productList, Context context) {
+    public CheckOutAdapter(List<Product> productList) {
         this.productList = productList;
-        this.context = context;
     }
 
     @NonNull
@@ -32,7 +32,7 @@ public class CheckOutAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Product product = productList.get(position);
         new ImageDownloader(((CheckOutAdapter.CheckoutViewHolder) holder).productImage).execute(product.getThumbnail());
         if (product.getName().length() > 40) {
@@ -57,10 +57,15 @@ public class CheckOutAdapter extends RecyclerView.Adapter {
             @Override
             public void onClick(View view) {
                 int quantity = Integer.parseInt(((CheckOutAdapter.CheckoutViewHolder) holder).quantity.getText().toString());
-                if (quantity > 1) {
+                if (quantity > 0) {
                     quantity--;
                     ((CheckOutAdapter.CheckoutViewHolder) holder).quantity.setText(String.valueOf(quantity));
                     ((CheckOutAdapter.CheckoutViewHolder) holder).sum.setText("đ" + String.valueOf(product.getUnitPrice() * quantity));
+                }
+                if (quantity == 0) {
+                    productList.remove(position);
+                    notifyItemRemoved(position);
+                    notifyItemRangeChanged(position, productList.size());
                 }
             }
         });

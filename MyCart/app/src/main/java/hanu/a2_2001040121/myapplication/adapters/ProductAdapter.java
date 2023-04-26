@@ -32,6 +32,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,14 +71,22 @@ public class ProductAdapter extends RecyclerView.Adapter {
         } else {
             ((ProductViewHolder) holder).productName.setText(product.getName());
         }
-        ((ProductViewHolder) holder).productPrice.setText("đ" + String.valueOf(product.getUnitPrice()));
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        String formattedPrice = formatter.format(product.getUnitPrice());
+        ((ProductViewHolder) holder).productPrice.setText("đ" + formattedPrice);
 
         ((ProductViewHolder) holder).shoppingCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Toast.makeText(context, "Added to cart", Toast.LENGTH_SHORT).show();
                 dbHelper = new MyDatabaseHelper(context);
                 db = dbHelper.getWritableDatabase();
+                if (dbHelper.checkProduct(product, db)) {
+                    dbHelper.updateProduct(product, db);
+                    return;
+                }
+                product.setQuantity(1);
                 dbHelper.insertProduct(product, db);
             }
         });
