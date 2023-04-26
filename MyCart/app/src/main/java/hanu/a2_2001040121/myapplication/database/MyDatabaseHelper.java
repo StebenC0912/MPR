@@ -120,4 +120,17 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                 + " WHERE " + COLUMN_ID + " = " + product.getId();
         db.execSQL(query);
     }
+
+    public void deleteProduct(Product product, SQLiteDatabase db) {
+        String query = "DELETE FROM " + TABLE_Name + " WHERE "
+                + COLUMN_ID + " = " + product.getId();
+        db.execSQL(query);
+    }
+
+    public void deleteQuantity(Product product, SQLiteDatabase db) {
+        String query = "UPDATE " + TABLE_Name + " SET "
+                + COLUMN_QUANTITY + " = " + COLUMN_QUANTITY + " - 1"
+                + " WHERE " + COLUMN_ID + " = " + product.getId();
+        db.execSQL(query);
+    }
 }
