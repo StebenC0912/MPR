@@ -23,8 +23,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayoutCompat2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView2"
@@ -44,37 +46,39 @@
         android:text="@string/quantity"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toStartOf="@+id/textView2" />
+
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:background="@drawable/border_product"
+        android:id="@+id/linearLayoutCompat2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        >
+        app:layout_constraintEnd_toEndOf="parent">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/total"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="#009688"
             android:padding="10dp"
-            />
-    <TextView
-    android:id="@+id/totalPrice"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/total_price"
-    android:textSize="24sp"
-    android:textStyle="bold"
-        android:textAlignment="center"
-        android:textColor="@android:color/holo_red_dark"
-        android:layout_weight="1"
-        />
+            android:text="@string/total"
+            android:textColor="#009688"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/totalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/total_price"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
         <ImageView
             android:layout_width="60dp"
             android:layout_height="50dp"
             android:padding="5dp"
-            android:src="@drawable/card_in_use_32"
-            />
+            android:src="@drawable/card_in_use_32" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>
