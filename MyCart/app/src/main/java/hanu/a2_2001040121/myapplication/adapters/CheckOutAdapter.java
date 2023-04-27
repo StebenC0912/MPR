@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import hanu.a2_2001040121.myapplication.ChangeTotalResult;
 import hanu.a2_2001040121.myapplication.R;
 import hanu.a2_2001040121.myapplication.database.MyDatabaseHelper;
 import hanu.a2_2001040121.myapplication.models.Product;
@@ -23,9 +25,11 @@ public class CheckOutAdapter extends RecyclerView.Adapter {
     private List<Product> productList;
     private MyDatabaseHelper dbHelper;
     private SQLiteDatabase db;
+    private Context context;
 
-    public CheckOutAdapter(List<Product> productList) {
+    public CheckOutAdapter(List<Product> productList, Context context) {
         this.productList = productList;
+        this.context = context;
     }
 
     @NonNull
@@ -64,6 +68,9 @@ public class CheckOutAdapter extends RecyclerView.Adapter {
                 dbHelper = new MyDatabaseHelper(view.getContext());
                 db = dbHelper.getWritableDatabase();
                 dbHelper.updateProduct(product, db);
+                ChangeTotalResult changeTotalResult = (ChangeTotalResult) view.getContext();
+                changeTotalResult.changeTotalResult();
+                Toast toast = Toast.makeText(view.getContext(), "ok", Toast.LENGTH_SHORT);
             }
         });
         ((CheckOutAdapter.CheckoutViewHolder) holder).minus.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +86,8 @@ public class CheckOutAdapter extends RecyclerView.Adapter {
                     dbHelper = new MyDatabaseHelper(view.getContext());
                     db = dbHelper.getWritableDatabase();
                     dbHelper.deleteQuantity(product, db);
+                    ChangeTotalResult changeTotalResult = (ChangeTotalResult) view.getContext();
+                    changeTotalResult.changeTotalResult();
                 }
                 if (quantity == 0) {
                     productList.remove(position);
@@ -87,6 +96,8 @@ public class CheckOutAdapter extends RecyclerView.Adapter {
                     dbHelper = new MyDatabaseHelper(view.getContext());
                     db = dbHelper.getWritableDatabase();
                     dbHelper.deleteProduct(product, db);
+                    ChangeTotalResult changeTotalResult = (ChangeTotalResult) view.getContext();
+                    changeTotalResult.changeTotalResult();
                 }
             }
         });
