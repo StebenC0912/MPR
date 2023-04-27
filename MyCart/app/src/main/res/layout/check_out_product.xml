@@ -3,23 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:gravity="center_vertical"
-    android:padding="@dimen/item_padding"
     android:background="@drawable/border_product"
-    >
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/item_padding"
+    android:layout_margin="@dimen/item_margin">
+
     <ImageView
         android:id="@+id/product_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/_0230324_214335"
-        />
+        android:src="@drawable/_0230324_214335" />
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_weight="1"
-        >
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/product_name"
@@ -28,63 +28,63 @@
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="Product name"
-            android:textSize="14sp"
-            android:textStyle="bold"
             android:paddingLeft="5dp"
+            android:text="Product name"
             android:textColor="@android:color/black"
-            />
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/product_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="3dp"
             android:text="d950000"
             android:textColor="@android:color/holo_red_dark"
-            android:textSize="18sp"
-            android:padding="3dp"
-            />
+            android:textSize="18sp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:gravity="end"
         android:orientation="vertical"
         android:paddingRight="7dp"
-        android:gravity="end"
+        android:paddingLeft="5dp"
         >
 
         <ImageView
             android:id="@+id/plus"
-            android:layout_weight="1"
             android:layout_width="25dp"
             android:layout_height="30dp"
-            android:src="@drawable/plus_icon" />
-        <TextView
             android:layout_weight="1"
+            android:src="@drawable/plus_icon" />
+
+        <TextView
             android:id="@+id/quantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1"
+            android:layout_weight="1"
             android:gravity="end"
+            android:text="1"
             android:textColor="@android:color/holo_red_dark"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
 
         <ImageView
-            android:layout_weight="1"
             android:id="@+id/minus"
             android:layout_width="25dp"
             android:layout_height="30dp"
+            android:layout_weight="1"
             android:src="@drawable/minus_icon" />
     </androidx.appcompat.widget.LinearLayoutCompat>
+
     <TextView
         android:id="@+id/sum"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="d950000"
+        android:textAlignment="center"
         android:textColor="@android:color/holo_red_dark"
-        android:textSize="18sp"
-        />
+        android:textSize="18sp" />
 </androidx.appcompat.widget.LinearLayoutCompat>

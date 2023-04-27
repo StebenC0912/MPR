@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -51,7 +53,25 @@ public class MainActivity extends AppCompatActivity {
         // Initialize ProductAdapter with the Product list
         adapter = new ProductAdapter(this, productList);
         recyclerView.setAdapter(adapter);
-        
+        TextView searchKeyword = findViewById(R.id.search_bar_edit_text);
+        ImageView searchIcon = findViewById(R.id.search_bar_image_view);
+        searchIcon.setOnClickListener(v -> {
+            String keyword = searchKeyword.getText().toString();
+            if (keyword.isEmpty()) {
+                Toast.makeText(this, "Please enter a keyword", Toast.LENGTH_SHORT).show();
+                adapter = new ProductAdapter(this, productList);
+                recyclerView.setAdapter(adapter);
+            } else {
+                ArrayList<Product> filteredList = new ArrayList<>();
+                for (Product product : productList) {
+                    if (product.getName().toLowerCase().contains(keyword.toLowerCase())) {
+                        filteredList.add(product);
+                    }
+                }
+                adapter = new ProductAdapter(this, filteredList);
+                recyclerView.setAdapter(adapter);
+            }
+        });
     }
 
     @Override

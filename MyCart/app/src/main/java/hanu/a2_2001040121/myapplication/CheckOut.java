@@ -42,6 +42,7 @@ public class CheckOut extends AppCompatActivity implements ChangeTotalResult {
     @Override
     public void changeTotalResult() {
         int total = 0;
+        productList = myDatabaseHelper.getAllProducts(sqLiteDatabase);
         for (Product product : productList) {
             total += product.getUnitPrice() * product.getQuantity();
         }
