@@ -79,6 +79,7 @@
             android:layout_width="60dp"
             android:layout_height="50dp"
             android:padding="5dp"
-            android:src="@drawable/card_in_use_32" />
+            android:src="@drawable/card_in_use_32"
+            android:contentDescription="@string/check_out_icon_des" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>
