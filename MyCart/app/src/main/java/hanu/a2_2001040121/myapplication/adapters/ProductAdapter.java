@@ -1,14 +1,11 @@
 package hanu.a2_2001040121.myapplication.adapters;
 
-import static android.content.ContentValues.TAG;
-
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.util.LruCache;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,25 +16,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 import hanu.a2_2001040121.myapplication.R;
 import hanu.a2_2001040121.myapplication.database.MyDatabaseHelper;
+import hanu.a2_2001040121.myapplication.detail_product;
 import hanu.a2_2001040121.myapplication.models.Product;
 
 public class ProductAdapter extends RecyclerView.Adapter {
@@ -74,7 +62,20 @@ public class ProductAdapter extends RecyclerView.Adapter {
         DecimalFormat formatter = new DecimalFormat("#,###");
         String formattedPrice = formatter.format(product.getUnitPrice());
         ((ProductViewHolder) holder).productPrice.setText("đ" + formattedPrice);
+        ((ProductViewHolder) holder).productName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                Intent intent = new Intent(context, detail_product.class);
+                intent.putExtra("productID", product.getId().toString());
+                intent.putExtra("productName", product.getName());
+                intent.putExtra("productPrice", String.valueOf(product.getUnitPrice()));
+                intent.putExtra("productThumbnail", product.getThumbnail());
+                intent.putExtra("productCategory", product.getCategory());
+
+                context.startActivity(intent);
+            }
+        });
         ((ProductViewHolder) holder).shoppingCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,35 +115,3 @@ public class ProductAdapter extends RecyclerView.Adapter {
     }
 }
 
-class ImageDownloader extends AsyncTask<String, Void, Bitmap> {
-
-    private ImageView imageView;
-
-    public ImageDownloader(ImageView imageView) {
-        this.imageView = imageView;
-    }
-
-    @Override
-    protected Bitmap doInBackground(String... urls) {
-        try {
-            URL url = new URL(urls[0]);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setDoInput(true);
-            connection.connect();
-            InputStream input = connection.getInputStream();
-            Bitmap bitmap = BitmapFactory.decodeStream(input);
-            input.close();
-            return bitmap;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    @Override
-    protected void onPostExecute(Bitmap bitmap) {
-        if (bitmap != null) {
-            imageView.setImageBitmap(bitmap);
-        }
-    }
-}
