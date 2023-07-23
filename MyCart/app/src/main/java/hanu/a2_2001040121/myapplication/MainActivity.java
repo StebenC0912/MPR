@@ -18,6 +18,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,12 +37,14 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Product> productList;
     private MyDatabaseHelper dbHelper;
     private SQLiteDatabase db;
-
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         recyclerView = findViewById(R.id.recycler_view);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
